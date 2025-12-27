@@ -7,6 +7,7 @@ import Services from './components/Services';
 import IntelligenceStats from './components/IntelligenceStats';
 import LeadForm from './components/LeadForm';
 import Footer from './components/Footer';
+import FloatingWhatsApp from './components/FloatingWhatsApp';
 
 const App: React.FC = () => {
   const [isDarkMode, setIsDarkMode] = useState(true);
@@ -46,6 +47,9 @@ const App: React.FC = () => {
         <LeadForm isDarkMode={isDarkMode} />
       </main>
       <Footer isDarkMode={isDarkMode} />
+      
+      {/* Botão Flutuante do WhatsApp */}
+      <FloatingWhatsApp />
     </div>
   );
 };

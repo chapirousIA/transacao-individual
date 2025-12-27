@@ -20,20 +20,9 @@ const IntelligenceStats: React.FC<IntelligenceStatsProps> = ({ isDarkMode }) => 
         <div>
           <span className="text-[10px] uppercase tracking-[0.4em] text-[#EFA335] mb-4 block font-bold">Resultados Verificáveis</span>
           <h2 className={`serif text-5xl md:text-6xl mb-8 transition-colors ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>Performance Pedrosa & Peixoto.</h2>
-          <p className={`font-light leading-relaxed mb-8 transition-colors ${isDarkMode ? 'text-white/60' : 'text-slate-600'}`}>
-            Nossa credibilidade é construída sobre deferimentos reais junto à PGFN. Unimos o rigor da advocacia tradicional à agilidade da consultoria moderna para assegurar o futuro fiscal do seu grupo econômico.
+          <p className={`font-light leading-relaxed transition-colors ${isDarkMode ? 'text-white/60' : 'text-slate-600'}`}>
+            Conhecemos a lógica de cobrança da PGFN por dentro — e usamos essa visão para estruturar a melhor estratégia de regularização para cada cliente. Com inteligência artificial aplicada às projeções e simulações, entregamos diagnósticos que antecipam cenários e fundamentam decisões seguras.
           </p>
-          
-          <div className={`grid grid-cols-2 gap-8 border-t pt-8 transition-colors ${isDarkMode ? 'border-white/10' : 'border-black/5'}`}>
-            <div>
-              <p className={`serif text-4xl mb-1 transition-colors ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>R$ 87M+</p>
-              <p className={`text-[10px] uppercase tracking-widest font-medium transition-colors ${isDarkMode ? 'text-white/40' : 'text-slate-400'}`}>Economia Gerada</p>
-            </div>
-            <div>
-              <p className={`serif text-4xl mb-1 transition-colors ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>218</p>
-              <p className={`text-[10px] uppercase tracking-widest font-medium transition-colors ${isDarkMode ? 'text-white/40' : 'text-slate-400'}`}>Casos de Sucesso</p>
-            </div>
-          </div>
         </div>
 
         <div className={`glass p-8 border-thin transition-all ${

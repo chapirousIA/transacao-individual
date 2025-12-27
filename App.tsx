@@ -21,10 +21,10 @@ const App: React.FC = () => {
       <main>
         <Hero isDarkMode={isDarkMode} />
         
-        {/* Partner Profile Section */}
-        <PartnerProfile isDarkMode={isDarkMode} />
-        
         <Services isDarkMode={isDarkMode} />
+
+        {/* Partner Profile Section - Movida para baixo de Soluções */}
+        <PartnerProfile isDarkMode={isDarkMode} />
         
         <IntelligenceStats isDarkMode={isDarkMode} />
 

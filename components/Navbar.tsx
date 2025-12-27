@@ -30,8 +30,8 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleTheme }) => {
         
         <div className="hidden md:flex items-center gap-10">
           {[
-            { name: 'O Sócio', link: '#perfil' },
             { name: 'Soluções', link: '#servicos' },
+            { name: 'O Sócio', link: '#perfil' },
             { name: 'Performance', link: '#performance' },
             { name: 'Contato', link: '#contato' }
           ].map((item) => (

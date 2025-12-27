@@ -87,7 +87,7 @@ const Services: React.FC<ServicesProps> = ({ isDarkMode }) => {
   };
 
   return (
-    <section id="serviços" className={`py-32 transition-colors duration-500 border-y ${
+    <section id="servicos" className={`py-32 transition-colors duration-500 border-y ${
       isDarkMode ? 'bg-[#0A0A0B] border-white/5' : 'bg-[#F4F4F7] border-black/5'
     }`}>
       <div className="max-w-7xl mx-auto px-6">

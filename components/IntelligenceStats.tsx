@@ -15,7 +15,7 @@ const IntelligenceStats: React.FC<IntelligenceStatsProps> = ({ isDarkMode }) => 
   ];
 
   return (
-    <section id="inteligência" className={`py-32 transition-colors duration-500 ${isDarkMode ? 'bg-black' : 'bg-white'}`}>
+    <section id="performance" className={`py-32 transition-colors duration-500 ${isDarkMode ? 'bg-black' : 'bg-white'}`}>
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
         <div>
           <span className="text-[10px] uppercase tracking-[0.4em] text-[#EFA335] mb-4 block font-bold">Resultados Verificáveis</span>

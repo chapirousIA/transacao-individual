@@ -7,7 +7,7 @@ interface PartnerProfileProps {
 
 const PartnerProfile: React.FC<PartnerProfileProps> = ({ isDarkMode }) => {
   return (
-    <section className={`py-24 md:py-32 overflow-hidden transition-colors duration-500 ${isDarkMode ? 'bg-[#0F0F10]' : 'bg-[#FFFFFF]'}`}>
+    <section id="perfil" className={`py-24 md:py-32 overflow-hidden transition-colors duration-500 ${isDarkMode ? 'bg-[#0F0F10]' : 'bg-[#FFFFFF]'}`}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
           

@@ -30,8 +30,9 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleTheme }) => {
         
         <div className="hidden md:flex items-center gap-10">
           {[
-            { name: 'Serviços', link: '#serviços' },
-            { name: 'Inteligência', link: '#inteligência' },
+            { name: 'O Sócio', link: '#perfil' },
+            { name: 'Soluções', link: '#servicos' },
+            { name: 'Performance', link: '#performance' },
             { name: 'Contato', link: '#contato' }
           ].map((item) => (
             <a 
@@ -58,9 +59,7 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleTheme }) => {
           </button>
 
           <a 
-            href={whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#formulario"
             className="btn-gold px-6 py-2 text-[10px] font-bold uppercase tracking-[0.2em]"
           >
             Solicitar Diagnóstico

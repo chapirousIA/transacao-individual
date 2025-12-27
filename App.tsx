@@ -21,21 +21,9 @@ const App: React.FC = () => {
       <main>
         <Hero isDarkMode={isDarkMode} />
         
-        {/* Partner Profile Section (New) */}
+        {/* Partner Profile Section */}
         <PartnerProfile isDarkMode={isDarkMode} />
         
-        {/* Trust/Logo Section */}
-        <section className={`py-20 border-y transition-colors duration-500 ${isDarkMode ? 'border-white/5 bg-black' : 'border-black/5 bg-white'} overflow-hidden`}>
-          <div className="max-w-7xl mx-auto px-6">
-            <p className={`text-center text-[9px] uppercase tracking-[0.6em] mb-12 ${isDarkMode ? 'text-white/30' : 'text-black/30'}`}>Instituições Parceiras e Esferas de Atuação</p>
-            <div className={`flex flex-wrap justify-center gap-16 opacity-30 grayscale contrast-125 ${isDarkMode ? 'text-white' : 'text-black'}`}>
-              {['PGFN', 'BNDES', 'RECEITA FEDERAL', 'CARF', 'TESOURO NACIONAL'].map(logo => (
-                <span key={logo} className="serif text-xl font-bold tracking-[0.2em]">{logo}</span>
-              ))}
-            </div>
-          </div>
-        </section>
-
         <Services isDarkMode={isDarkMode} />
         
         <IntelligenceStats isDarkMode={isDarkMode} />

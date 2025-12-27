@@ -76,45 +76,57 @@ const services = [
   }
 ];
 
-const Services: React.FC = () => {
+interface ServicesProps {
+  isDarkMode: boolean;
+}
+
+const Services: React.FC<ServicesProps> = ({ isDarkMode }) => {
   const getWaLink = (title: string) => {
     const msg = `Olá! Tenho interesse no serviço: ${title}. Gostaria de solicitar uma análise de viabilidade técnica para minha empresa.`;
     return `https://wa.me/5585994059821?text=${encodeURIComponent(msg)}`;
   };
 
   return (
-    <section id="serviços" className="py-32 bg-[#0A0A0B] border-y border-white/5">
+    <section id="serviços" className={`py-32 transition-colors duration-500 border-y ${
+      isDarkMode ? 'bg-[#0A0A0B] border-white/5' : 'bg-[#F4F4F7] border-black/5'
+    }`}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
           <div className="max-w-2xl">
-            <h2 className="serif text-5xl md:text-6xl mb-6">Soluções Corporativas</h2>
-            <p className="text-white/50 font-light leading-relaxed">
-              O passivo tributário não deve ser um limitador para a operação. Nossa abordagem técnica resolve o impasse fiscal e abre novas lines de crescimento.
+            <h2 className={`serif text-5xl md:text-6xl mb-6 transition-colors ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>Soluções Corporativas</h2>
+            <p className={`font-light leading-relaxed transition-colors ${isDarkMode ? 'text-white/50' : 'text-slate-600'}`}>
+              O passivo tributário não deve ser um limitador para a operação. Nossa abordagem técnica resolve o impasse fiscal e abre novas linhas de crescimento.
             </p>
           </div>
           <div className="text-right hidden md:block">
-            <span className="text-[60px] serif text-white/5 leading-none select-none uppercase tracking-widest">Boutique</span>
+            <span className={`text-[60px] serif leading-none select-none uppercase tracking-widest transition-colors ${isDarkMode ? 'text-white/5' : 'text-black/5'}`}>Boutique</span>
           </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {services.map((s, idx) => (
-            <div key={idx} className="p-12 border border-white/10 hover:bg-white/[0.02] transition-colors group relative flex flex-col justify-between">
+            <div key={idx} className={`p-12 border transition-all group relative flex flex-col justify-between ${
+              isDarkMode 
+                ? 'border-white/10 hover:bg-white/[0.02] bg-transparent' 
+                : 'border-black/5 hover:bg-white bg-white/50 shadow-sm hover:shadow-xl'
+            }`}>
               <div>
-                <div className="absolute top-0 right-0 p-4 opacity-10">
+                <div className={`absolute top-0 right-0 p-4 transition-colors ${isDarkMode ? 'opacity-10' : 'opacity-5'}`}>
                   <span className="text-4xl serif">{idx + 1}</span>
                 </div>
                 <span className="block text-[10px] uppercase tracking-[0.3em] text-[#EFA335] mb-8 font-bold">{s.category}</span>
-                <h3 className="serif text-3xl mb-2 group-hover:text-white transition-colors">{s.title}</h3>
-                <p className="text-[10px] uppercase tracking-widest text-white/30 mb-8">{s.subtitle}</p>
+                <h3 className={`serif text-3xl mb-2 transition-colors ${isDarkMode ? 'group-hover:text-white' : 'text-slate-900'}`}>{s.title}</h3>
+                <p className={`text-[10px] uppercase tracking-widest mb-8 transition-colors ${isDarkMode ? 'text-white/30' : 'text-slate-400'}`}>{s.subtitle}</p>
                 
-                <p className="text-sm text-white/50 leading-relaxed font-light mb-10 min-h-[80px]">
+                <p className={`text-sm leading-relaxed font-light mb-10 min-h-[80px] transition-colors ${isDarkMode ? 'text-white/50' : 'text-slate-500'}`}>
                   {s.desc}
                 </p>
                 
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
                   {s.bullets.map((b, i) => (
-                    <li key={i} className="flex items-center gap-2 text-[10px] uppercase tracking-widest text-white/60">
+                    <li key={i} className={`flex items-center gap-2 text-[10px] uppercase tracking-widest transition-colors ${
+                      isDarkMode ? 'text-white/60' : 'text-slate-600'
+                    }`}>
                       <span className="w-1.5 h-1.5 bg-[#EFA335] rounded-full"></span>
                       {b}
                     </li>

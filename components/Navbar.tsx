@@ -15,9 +15,9 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleTheme }) => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     
-    // Configura o volume inicial para um nível de "música de fundo" de restaurante (15-20%)
+    // Volume configurado para Jazz Beats (presença equilibrada de graves e batidas)
     if (audioRef.current) {
-      audioRef.current.volume = 0.18;
+      audioRef.current.volume = 0.22;
     }
 
     return () => window.removeEventListener('scroll', handleScroll);
@@ -47,11 +47,11 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleTheme }) => {
           <Logo light={isDarkMode} scale={0.8} />
         </a>
         
-        {/* Elemento de Áudio - Restaurant Lounge Background Music (Lofi Jazz & Chill) */}
+        {/* Elemento de Áudio - Jazz Beats [lofi jazz, jazzhop, lo-fi hip hop] */}
         <audio 
           ref={audioRef} 
           loop 
-          src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-17.mp3" 
+          src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3" 
           preload="auto"
         />
         
@@ -74,7 +74,7 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleTheme }) => {
           ))}
           
           <div className="flex items-center gap-2 border-l border-white/10 pl-6">
-            {/* Music Toggle - Lounge Control */}
+            {/* Music Toggle - Jazz Beats Control */}
             <button 
               onClick={toggleMusic}
               className={`p-2 px-3 rounded-full transition-all flex items-center justify-center gap-3 border ${
@@ -82,14 +82,14 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleTheme }) => {
                   ? 'text-[#EFA335] bg-[#EFA335]/10 border-[#EFA335]/30' 
                   : (isDarkMode ? 'text-white/40 border-white/10 hover:text-white/70 hover:bg-white/5' : 'text-black/40 border-black/5 hover:text-black/70 hover:bg-black/5')
               }`}
-              title={isMusicPlaying ? "Pausar Lofi Jazz" : "Ouvir Restaurant Lounge Jazz"}
+              title={isMusicPlaying ? "Pausar Jazz Beats" : "Ouvir Jazz Beats [Lofi/Jazzhop]"}
             >
               <div className="flex items-end gap-[2px] h-3">
                 <div className={`w-[2px] bg-current transition-all duration-500 ${isMusicPlaying ? 'animate-[music-bar_1.2s_infinite_ease-in-out_0.1s] h-3' : 'h-1'}`}></div>
                 <div className={`w-[2px] bg-current transition-all duration-500 ${isMusicPlaying ? 'animate-[music-bar_1.5s_infinite_ease-in-out_0.4s] h-4' : 'h-2'}`}></div>
                 <div className={`w-[2px] bg-current transition-all duration-500 ${isMusicPlaying ? 'animate-[music-bar_1.1s_infinite_ease-in-out_0.2s] h-2' : 'h-1'}`}></div>
               </div>
-              <span className="text-[8px] uppercase tracking-[0.2em] font-bold">Lounge</span>
+              <span className="text-[8px] uppercase tracking-[0.2em] font-bold">Jazz Beats</span>
             </button>
 
             {/* Theme Toggle */}

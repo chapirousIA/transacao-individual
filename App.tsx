@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
+import PartnerProfile from './components/PartnerProfile';
 import Services from './components/Services';
 import IntelligenceStats from './components/IntelligenceStats';
 import LeadForm from './components/LeadForm';
@@ -19,6 +20,9 @@ const App: React.FC = () => {
       <Navbar isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
       <main>
         <Hero isDarkMode={isDarkMode} />
+        
+        {/* Partner Profile Section (New) */}
+        <PartnerProfile isDarkMode={isDarkMode} />
         
         {/* Trust/Logo Section */}
         <section className={`py-20 border-y transition-colors duration-500 ${isDarkMode ? 'border-white/5 bg-black' : 'border-black/5 bg-white'} overflow-hidden`}>

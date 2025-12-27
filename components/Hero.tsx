@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 interface HeroProps {
@@ -13,13 +12,19 @@ const Hero: React.FC<HeroProps> = ({ isDarkMode }) => {
   const trackWhatsAppClick = (location: string) => {
     const win = window as any;
     if (typeof win.gtag === 'function') {
+      // 1. Google Analytics
       win.gtag('event', 'contact', {
         'event_category': 'whatsapp',
         'event_label': `hero_${location}`
       });
-      // Se tiver um ID de conversão específico do Google Ads para clique em WhatsApp, insira aqui:
-      // win.gtag('event', 'conversion', { 'send_to': 'AW-801482985/LABEL_AQUI' });
+      
+      // 2. Google Ads Conversion
+      // IMPORTANTE: Substitua 'ROTULO_CONVERSAO_WHATSAPP' pelo rótulo gerado no painel do Ads
+      win.gtag('event', 'conversion', { 
+        'send_to': 'AW-801482985/ROTULO_CONVERSAO_WHATSAPP' 
+      });
     }
+    
     if (typeof win.fbq === 'function') {
       win.fbq('track', 'Contact', { content_category: 'whatsapp', content_name: `hero_${location}` });
     }
@@ -27,7 +32,6 @@ const Hero: React.FC<HeroProps> = ({ isDarkMode }) => {
 
   return (
     <section className={`relative min-h-screen flex flex-col justify-center px-6 pt-28 pb-20 overflow-hidden transition-colors duration-500 ${isDarkMode ? 'bg-[#0A0D14]' : 'bg-[#FDFDFD]'}`}>
-      {/* Background decoration */}
       <div className={`absolute top-0 right-0 w-1/2 h-full transition-colors duration-500 -z-10 translate-x-1/4 skew-x-[-12deg] ${isDarkMode ? 'bg-[#0D121A] opacity-50' : 'bg-slate-50 opacity-100'}`} />
       <div className={`absolute -bottom-40 -left-20 w-[600px] h-[600px] rounded-full blur-[150px] transition-opacity duration-500 ${isDarkMode ? 'bg-[#EFA335]/5 opacity-100' : 'bg-[#EFA335]/10 opacity-50'}`} />
 
@@ -76,21 +80,6 @@ const Hero: React.FC<HeroProps> = ({ isDarkMode }) => {
               Falar com Especialista
             </a>
           </div>
-
-          <div className="mt-16 grid grid-cols-3 gap-4 opacity-40">
-            <div>
-              <p className="text-[#EFA335] text-[10px] font-bold mb-1 tracking-widest uppercase">Performance</p>
-              <p className={`text-[9px] uppercase tracking-widest ${isDarkMode ? 'text-white/80' : 'text-black/80'}`}>Redução 65%</p>
-            </div>
-            <div>
-              <p className="text-[#EFA335] text-[10px] font-bold mb-1 tracking-widest uppercase">Prazos</p>
-              <p className={`text-[9px] uppercase tracking-widest ${isDarkMode ? 'text-white/80' : 'text-black/80'}`}>120 Parcelas</p>
-            </div>
-            <div>
-              <p className="text-[#EFA335] text-[10px] font-bold mb-1 tracking-widest uppercase">Crédito</p>
-              <p className={`text-[9px] uppercase tracking-widest ${isDarkMode ? 'text-white/80' : 'text-black/80'}`}>Rating A/B</p>
-            </div>
-          </div>
         </div>
         
         <div className="lg:col-span-6 relative flex justify-center lg:justify-end">
@@ -103,10 +92,6 @@ const Hero: React.FC<HeroProps> = ({ isDarkMode }) => {
                 src="office-hero.jpg" 
                 alt="Sede Pedrosa & Peixoto Advogados" 
                 className={`w-full h-full object-cover transition-all duration-1000 ${isDarkMode ? 'grayscale-[0.05] group-hover:grayscale-0' : ''} group-hover:scale-105`}
-                onError={(e) => {
-                  (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=2069&auto=format&fit=crop";
-                }}
-                loading="eager"
               />
             </div>
             
@@ -127,7 +112,6 @@ const Hero: React.FC<HeroProps> = ({ isDarkMode }) => {
               </p>
             </div>
           </div>
-          <div className="absolute -top-6 -right-6 w-32 h-32 border-t border-r border-[#EFA335]/20 -z-0"></div>
         </div>
       </div>
     </section>

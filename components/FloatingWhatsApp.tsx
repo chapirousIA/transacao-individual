@@ -6,14 +6,22 @@ const FloatingWhatsApp: React.FC = () => {
   const url = `https://wa.me/${waNumber}?text=${message}`;
 
   const handleTrack = () => {
-    // Fix: Cast window to any to access gtag and fbq tracking functions added by external scripts
     const win = window as any;
     if (typeof win.gtag === 'function') {
+      // 1. Google Analytics
       win.gtag('event', 'contact', {
         'event_category': 'whatsapp',
         'event_label': 'floating_button'
       });
+      
+      // 2. Google Ads Conversion
+      // IMPORTANTE: Substitua 'ROTULO_CONVERSAO_WHATSAPP' pelo rótulo real gerado no painel do Ads
+      win.gtag('event', 'conversion', { 
+        'send_to': 'AW-801482985/ROTULO_CONVERSAO_WHATSAPP' 
+      });
     }
+    
+    // 3. Meta Pixel
     if (typeof win.fbq === 'function') {
       win.fbq('track', 'Contact');
     }

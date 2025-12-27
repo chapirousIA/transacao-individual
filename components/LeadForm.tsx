@@ -11,7 +11,7 @@ const LeadForm: React.FC = () => {
       <div className="max-w-4xl mx-auto px-6 relative">
         <div className="text-center mb-16">
           <h2 className="serif text-4xl md:text-5xl mb-4 text-white">Diagnóstico Estratégico</h2>
-          <p className="text-white/40 font-light tracking-wide uppercase text-[10px]">Análise técnica restrita a passivos federais acima de R$ 1 milhão</p>
+          <p className="text-white/40 font-light tracking-wide uppercase text-[10px]">Análise técnica restrita a passivos federais acima de R$ 10 milhões</p>
         </div>
 
         <div className="glass p-12 border-thin">
@@ -57,7 +57,7 @@ const LeadForm: React.FC = () => {
                 <div className="space-y-6">
                   <p className="text-white/60 text-sm mb-4 font-light border-l border-[#EFA335] pl-4">Volume estimado do passivo tributário federal:</p>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                    {['R$ 1M - 5M', 'R$ 5M - 20M', 'Acima de R$ 20M'].map(val => (
+                    {['R$ 10M - 20M', 'R$ 20M - 50M', 'Acima de R$ 50M'].map(val => (
                        <button 
                         key={val}
                         onClick={() => setStep(3)}

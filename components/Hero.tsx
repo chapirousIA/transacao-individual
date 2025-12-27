@@ -27,7 +27,7 @@ const Hero: React.FC = () => {
           
           <p className="max-w-xl text-lg text-white/70 font-light leading-relaxed mb-12 border-l-2 border-[#EFA335] pl-8">
             Especialistas em Transação Individual PGFN e Recuperação de CAPAG. 
-            Garantimos a segurança jurídica necessária para empresas com passivos acima de <span className="text-white font-medium">R$ 1 Milhão</span>.
+            Garantimos a segurança jurídica necessária para empresas com passivos acima de <span className="text-white font-medium">R$ 10 Milhões</span>.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6">
@@ -52,7 +52,7 @@ const Hero: React.FC = () => {
             </div>
             <div>
               <p className="text-[#EFA335] text-xs font-bold mb-1 tracking-widest uppercase">Prazos</p>
-              <p className="text-[10px] uppercase tracking-widest text-white/80">Até 108 Parcelas</p>
+              <p className="text-[10px] uppercase tracking-widest text-white/80">Até 120 Parcelas</p>
             </div>
             <div>
               <p className="text-[#EFA335] text-xs font-bold mb-1 tracking-widest uppercase">Crédito</p>

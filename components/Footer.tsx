@@ -25,30 +25,49 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode }) => {
             Excelência jurídica focada em Transações Individuais e reestruturação de CAPAG para grupos econômicos de alta performance.
           </p>
           <div className="flex gap-4">
-            {['LN', 'IG'].map(i => (
-              <a key={i} href="#" className={`w-8 h-8 rounded-full border flex items-center justify-center text-[10px] transition-all ${
+            <a 
+              href="https://www.linkedin.com/" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className={`w-8 h-8 rounded-full border flex items-center justify-center text-[10px] transition-all ${
                 isDarkMode 
                   ? 'border-white/10 text-white/40 hover:text-[#EFA335] hover:border-[#EFA335]' 
                   : 'border-slate-200 text-slate-400 hover:text-[#EFA335] hover:border-[#EFA335]'
-              }`}>
-                {i}
-              </a>
-            ))}
+              }`}
+              title="LinkedIn"
+            >
+              LN
+            </a>
+            <a 
+              href="https://www.instagram.com/fabiopedrosaadv" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className={`w-8 h-8 rounded-full border flex items-center justify-center text-[10px] transition-all ${
+                isDarkMode 
+                  ? 'border-white/10 text-white/40 hover:text-[#EFA335] hover:border-[#EFA335]' 
+                  : 'border-slate-200 text-slate-400 hover:text-[#EFA335] hover:border-[#EFA335]'
+              }`}
+              title="Instagram @fabiopedrosaadv"
+            >
+              IG
+            </a>
           </div>
         </div>
         
         <div>
-          <h4 className={`text-[10px] uppercase tracking-widest mb-6 font-bold transition-colors ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>Presença</h4>
+          <h4 className={`text-[10px] uppercase tracking-widest mb-6 font-bold transition-colors ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>Atendimento Nacional</h4>
           <ul className={`space-y-4 text-xs tracking-wide transition-colors ${isDarkMode ? 'text-white/40' : 'text-slate-500'}`}>
-            <li>São Paulo - Ed. Faria Lima Hub</li>
-            <li>Brasília - Complexo Administrativo</li>
-            <li>Porto Alegre - Corporate Park</li>
+            <li className="leading-relaxed">
+              Sede Física: Rua Ary Barroso, 70, <br />
+              Torre 1, salas 1011/1012 — ITC <br />
+              Fortaleza - CE
+            </li>
           </ul>
         </div>
 
         <div>
           <h4 className={`text-[10px] uppercase tracking-widest mb-6 font-bold transition-colors ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>Relacionamento</h4>
-          <p className={`text-xs mb-2 transition-colors ${isDarkMode ? 'text-white/40' : 'text-slate-500'}`}>atendimento@pedrosapeixoto.adv.br</p>
+          <p className={`text-xs mb-2 transition-colors ${isDarkMode ? 'text-white/40' : 'text-slate-500'}`}>contato@pedrosapeixoto.adv.br</p>
           <a 
             href={`https://wa.me/${waNumber}?text=${footerWaMsg}`}
             target="_blank"
@@ -57,6 +76,9 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode }) => {
           >
             +55 85 99405-9821
           </a>
+          <p className={`text-[9px] mt-4 uppercase tracking-widest transition-colors ${isDarkMode ? 'text-white/20' : 'text-slate-400'}`}>
+            @fabiopedrosaadv
+          </p>
         </div>
       </div>
       

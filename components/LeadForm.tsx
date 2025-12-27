@@ -5,8 +5,78 @@ interface LeadFormProps {
   isDarkMode: boolean;
 }
 
+interface FormData {
+  faturamento: string;
+  passivo: string;
+  interesseCapag: string;
+  nome: string;
+  whatsapp: string;
+  email: string;
+}
+
 const LeadForm: React.FC<LeadFormProps> = ({ isDarkMode }) => {
   const [step, setStep] = useState(1);
+  const [formData, setFormData] = useState<FormData>({
+    faturamento: '',
+    passivo: '',
+    interesseCapag: 'Não informado',
+    nome: '',
+    whatsapp: '',
+    email: ''
+  });
+
+  const updateField = (field: keyof FormData, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
+
+  const handleStep1 = (val: string) => {
+    updateField('faturamento', val);
+    setStep(2);
+  };
+
+  const handleStep2 = (val: string) => {
+    updateField('passivo', val);
+    setStep(3);
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // Futura integração com n8n:
+    // sendToWebhook(formData);
+
+    const message = `*Novo Diagnóstico Estratégico - Pedrosa & Peixoto*
+---------------------------------------
+*DADOS DO GRUPO ECONÔMICO:*
+• *Faturamento:* ${formData.faturamento}
+• *Passivo Estimado:* ${formData.passivo}
+• *Interesse em CAPAG:* ${formData.interesseCapag}
+
+*CONTATO DO GESTOR:*
+• *Nome:* ${formData.nome}
+• *WhatsApp:* ${formData.whatsapp}
+• *E-mail:* ${formData.email}
+---------------------------------------
+_Lead originado via formulário do site._`;
+
+    const waUrl = `https://wa.me/5585994059821?text=${encodeURIComponent(message)}`;
+    window.open(waUrl, '_blank');
+  };
+
+  // Função placeholder para integração futura
+  /*
+  const sendToWebhook = async (data: FormData) => {
+    try {
+      await fetch('SUA_URL_DO_N8N_AQUI', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+    } catch (err) {
+      console.error('Erro ao enviar para webhook', err);
+    }
+  };
+  */
 
   return (
     <section id="formulario" className={`py-32 transition-colors duration-500 relative overflow-hidden ${
@@ -18,8 +88,11 @@ const LeadForm: React.FC<LeadFormProps> = ({ isDarkMode }) => {
       
       <div className="max-w-4xl mx-auto px-6 relative">
         <div className="text-center mb-16">
+          <span className="text-[10px] uppercase tracking-[0.4em] text-[#EFA335] mb-4 block font-bold">Inicie sua Regularização</span>
           <h2 className={`serif text-4xl md:text-5xl mb-4 transition-colors ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>Diagnóstico Estratégico</h2>
-          <p className={`font-light tracking-wide uppercase text-[10px] transition-colors ${isDarkMode ? 'text-white/40' : 'text-slate-400'}`}>Análise técnica restrita a passivos federais acima de R$ 10 milhões</p>
+          <p className={`font-light tracking-wide uppercase text-[10px] transition-colors ${isDarkMode ? 'text-white/40' : 'text-slate-400'}`}>
+            Preencha os dados abaixo para que nossos especialistas analisem seu caso.
+          </p>
         </div>
 
         <div className={`p-12 border-thin transition-all ${
@@ -42,7 +115,7 @@ const LeadForm: React.FC<LeadFormProps> = ({ isDarkMode }) => {
             ))}
           </div>
 
-          <form onSubmit={(e) => e.preventDefault()} className="space-y-8">
+          <form onSubmit={handleSubmit} className="space-y-8">
             {step === 1 && (
               <div className="animate-fade-in space-y-6">
                 <p className={`text-sm mb-4 font-light border-l border-[#EFA335] pl-4 transition-colors ${isDarkMode ? 'text-white/60' : 'text-slate-600'}`}>Selecione o faturamento anual do grupo econômico:</p>
@@ -55,7 +128,8 @@ const LeadForm: React.FC<LeadFormProps> = ({ isDarkMode }) => {
                   ].map((opt) => (
                     <button 
                       key={opt}
-                      onClick={() => setStep(2)}
+                      type="button"
+                      onClick={() => handleStep1(opt)}
                       className={`p-6 border text-left transition-all group ${
                         isDarkMode 
                           ? 'border-white/5 bg-white/[0.01] hover:bg-white/[0.04] hover:border-[#EFA335]/30' 
@@ -78,7 +152,8 @@ const LeadForm: React.FC<LeadFormProps> = ({ isDarkMode }) => {
                     {['R$ 10M - 20M', 'R$ 20M - 50M', 'Acima de R$ 50M'].map(val => (
                        <button 
                         key={val}
-                        onClick={() => setStep(3)}
+                        type="button"
+                        onClick={() => handleStep2(val)}
                         className={`p-4 border text-center text-[11px] uppercase tracking-widest transition-all ${
                           isDarkMode 
                             ? 'border-white/10 text-white/60 hover:border-[#EFA335] hover:text-[#EFA335] bg-white/[0.01]' 
@@ -91,20 +166,30 @@ const LeadForm: React.FC<LeadFormProps> = ({ isDarkMode }) => {
                   </div>
                   <div className={`mt-10 p-6 border transition-colors ${isDarkMode ? 'bg-white/[0.02] border-white/5' : 'bg-slate-50 border-slate-100'}`}>
                     <label className={`text-[10px] uppercase tracking-widest block mb-6 font-bold transition-colors ${isDarkMode ? 'text-white/50' : 'text-slate-500'}`}>Interesse prioritário em CAPAG?</label>
-                    <div className="flex gap-6">
+                    <div className="flex flex-wrap gap-6">
                         <label className="flex items-center gap-3 cursor-pointer group">
-                           <input type="radio" name="capag" className="accent-[#EFA335]" />
-                           <span className={`text-[10px] uppercase tracking-widest group-hover:text-white transition-colors ${isDarkMode ? 'text-white/40' : 'text-slate-500 hover:text-slate-900'}`}>Sim, necessito crédito</span>
+                           <input 
+                            type="radio" 
+                            name="capag" 
+                            className="accent-[#EFA335]" 
+                            onChange={() => updateField('interesseCapag', 'Sim, necessito crédito')}
+                          />
+                           <span className={`text-[10px] uppercase tracking-widest group-hover:text-[#EFA335] transition-colors ${isDarkMode ? 'text-white/40' : 'text-slate-500'}`}>Sim, necessito crédito</span>
                         </label>
                         <label className="flex items-center gap-3 cursor-pointer group">
-                           <input type="radio" name="capag" className="accent-[#EFA335]" />
-                           <span className={`text-[10px] uppercase tracking-widest group-hover:text-white transition-colors ${isDarkMode ? 'text-white/40' : 'text-slate-500 hover:text-slate-900'}`}>Foco em Transação PGFN</span>
+                           <input 
+                            type="radio" 
+                            name="capag" 
+                            className="accent-[#EFA335]" 
+                            onChange={() => updateField('interesseCapag', 'Foco em Transação PGFN')}
+                          />
+                           <span className={`text-[10px] uppercase tracking-widest group-hover:text-[#EFA335] transition-colors ${isDarkMode ? 'text-white/40' : 'text-slate-500'}`}>Foco em Transação PGFN</span>
                         </label>
                     </div>
                   </div>
                 </div>
                 <div className="flex justify-start">
-                  <button onClick={() => setStep(1)} className={`text-[10px] uppercase tracking-[0.2em] transition-colors border-b border-transparent hover:border-[#EFA335] pb-1 ${isDarkMode ? 'text-white/40 hover:text-[#EFA335]' : 'text-slate-400 hover:text-[#EFA335]'}`}>
+                  <button type="button" onClick={() => setStep(1)} className={`text-[10px] uppercase tracking-[0.2em] transition-colors border-b border-transparent hover:border-[#EFA335] pb-1 ${isDarkMode ? 'text-white/40 hover:text-[#EFA335]' : 'text-slate-400 hover:text-[#EFA335]'}`}>
                     ← Voltar ao início
                   </button>
                 </div>
@@ -117,26 +202,60 @@ const LeadForm: React.FC<LeadFormProps> = ({ isDarkMode }) => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <label className={`text-[10px] uppercase tracking-widest block font-bold transition-colors ${isDarkMode ? 'text-white/30' : 'text-slate-400'}`}>Nome do Gestor/Sócio</label>
-                    <input type="text" className={`w-full border p-4 text-sm outline-none focus:border-[#EFA335]/50 transition-colors ${
-                      isDarkMode ? 'bg-white/[0.03] border-white/10 text-white' : 'bg-slate-50 border-slate-200 text-slate-900'
-                    }`} placeholder="Ex: Dr. Roberto Silva" />
+                    <input 
+                      type="text" 
+                      required
+                      value={formData.nome}
+                      onChange={(e) => updateField('nome', e.target.value)}
+                      className={`w-full border p-4 text-sm outline-none focus:border-[#EFA335]/50 transition-colors ${
+                        isDarkMode ? 'bg-white/[0.03] border-white/10 text-white' : 'bg-slate-50 border-slate-200 text-slate-900'
+                      }`} 
+                      placeholder="Ex: Dr. Roberto Silva" 
+                    />
                   </div>
                   <div className="space-y-2">
                     <label className={`text-[10px] uppercase tracking-widest block font-bold transition-colors ${isDarkMode ? 'text-white/30' : 'text-slate-400'}`}>WhatsApp Corporativo</label>
-                    <input type="tel" className={`w-full border p-4 text-sm outline-none focus:border-[#EFA335]/50 transition-colors ${
-                      isDarkMode ? 'bg-white/[0.03] border-white/10 text-white' : 'bg-slate-50 border-slate-200 text-slate-900'
-                    }`} placeholder="(11) 99999-9999" />
+                    <input 
+                      type="tel" 
+                      required
+                      value={formData.whatsapp}
+                      onChange={(e) => updateField('whatsapp', e.target.value)}
+                      className={`w-full border p-4 text-sm outline-none focus:border-[#EFA335]/50 transition-colors ${
+                        isDarkMode ? 'bg-white/[0.03] border-white/10 text-white' : 'bg-slate-50 border-slate-200 text-slate-900'
+                      }`} 
+                      placeholder="(85) 99999-9999" 
+                    />
                   </div>
                 </div>
                 <div className="space-y-2">
                     <label className={`text-[10px] uppercase tracking-widest block font-bold transition-colors ${isDarkMode ? 'text-white/30' : 'text-slate-400'}`}>E-mail Corporativo</label>
-                    <input type="email" className={`w-full border p-4 text-sm outline-none focus:border-[#EFA335]/50 transition-colors ${
-                      isDarkMode ? 'bg-white/[0.03] border-white/10 text-white' : 'bg-slate-50 border-slate-200 text-slate-900'
-                    }`} placeholder="gestao@empresa.com.br" />
+                    <input 
+                      type="email" 
+                      required
+                      value={formData.email}
+                      onChange={(e) => updateField('email', e.target.value)}
+                      className={`w-full border p-4 text-sm outline-none focus:border-[#EFA335]/50 transition-colors ${
+                        isDarkMode ? 'bg-white/[0.03] border-white/10 text-white' : 'bg-slate-50 border-slate-200 text-slate-900'
+                      }`} 
+                      placeholder="gestao@empresa.com.br" 
+                    />
                 </div>
-                <button className="btn-gold w-full py-5 text-[11px] font-bold uppercase tracking-[0.4em] shadow-xl shadow-[#EFA335]/10">
-                  Agendar Análise Técnica
-                </button>
+                <div className="space-y-4">
+                  <button 
+                    type="submit"
+                    className="btn-gold w-full py-5 text-[11px] font-bold uppercase tracking-[0.4em] shadow-xl shadow-[#EFA335]/10"
+                  >
+                    Agendar Análise Técnica
+                  </button>
+                  <p className={`text-[8px] text-center uppercase tracking-widest ${isDarkMode ? 'text-white/20' : 'text-slate-400'}`}>
+                    Ao clicar, você será direcionado para o WhatsApp da nossa equipe de estratégia.
+                  </p>
+                </div>
+                <div className="flex justify-start">
+                  <button type="button" onClick={() => setStep(2)} className={`text-[10px] uppercase tracking-[0.2em] transition-colors border-b border-transparent hover:border-[#EFA335] pb-1 ${isDarkMode ? 'text-white/40 hover:text-[#EFA335]' : 'text-slate-400 hover:text-[#EFA335]'}`}>
+                    ← Voltar ao financeiro
+                  </button>
+                </div>
               </div>
             )}
           </form>

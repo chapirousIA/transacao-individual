@@ -11,13 +11,13 @@ const Hero: React.FC<HeroProps> = ({ isDarkMode }) => {
   const specialistMsg = encodeURIComponent("Olá! Gostaria de falar com um especialista sobre a regularização do passivo tributário federal da minha empresa.");
   
   return (
-    <section className={`relative min-h-screen flex flex-col justify-center px-6 pt-20 overflow-hidden transition-colors duration-500 ${isDarkMode ? 'bg-[#0A0D14]' : 'bg-[#FDFDFD]'}`}>
-      {/* Elementos decorativos de fundo para profundidade */}
+    <section className={`relative min-h-screen flex flex-col justify-center px-6 pt-28 pb-20 overflow-hidden transition-colors duration-500 ${isDarkMode ? 'bg-[#0A0D14]' : 'bg-[#FDFDFD]'}`}>
+      {/* Background decoration */}
       <div className={`absolute top-0 right-0 w-1/2 h-full transition-colors duration-500 -z-10 translate-x-1/4 skew-x-[-12deg] ${isDarkMode ? 'bg-[#0D121A] opacity-50' : 'bg-slate-50 opacity-100'}`} />
       <div className={`absolute -bottom-40 -left-20 w-[600px] h-[600px] rounded-full blur-[150px] transition-opacity duration-500 ${isDarkMode ? 'bg-[#EFA335]/5 opacity-100' : 'bg-[#EFA335]/10 opacity-50'}`} />
 
-      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-        <div className="lg:col-span-7 z-10">
+      <div className="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="lg:col-span-6 z-10">
           <div className="flex items-center gap-3 mb-8 animate-fade-in">
              <div className="w-8 h-[1px] bg-[#EFA335]"></div>
              <span className="text-[10px] uppercase tracking-[0.5em] text-[#EFA335] font-bold">
@@ -25,7 +25,7 @@ const Hero: React.FC<HeroProps> = ({ isDarkMode }) => {
              </span>
           </div>
           
-          <h1 className={`serif text-6xl md:text-8xl lg:text-8xl leading-[1.05] mb-8 transition-colors duration-500 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
+          <h1 className={`serif text-5xl md:text-7xl lg:text-8xl leading-[1.05] mb-8 transition-colors duration-500 ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>
             Engenharia <br />
             <span className="text-[#EFA335] italic">Tributária</span> <br />
             Estratégica.
@@ -36,7 +36,7 @@ const Hero: React.FC<HeroProps> = ({ isDarkMode }) => {
             Garantimos a segurança jurídica necessária para empresas com passivos acima de <span className={`font-medium ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>R$ 10 Milhões</span>.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-6">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
             <a 
               href={`https://wa.me/${waNumber}?text=${diagMsg}`}
               target="_blank"
@@ -60,53 +60,57 @@ const Hero: React.FC<HeroProps> = ({ isDarkMode }) => {
             </a>
           </div>
 
-          <div className="mt-16 grid grid-cols-1 sm:grid-cols-3 gap-8 opacity-40">
+          <div className="mt-16 grid grid-cols-3 gap-4 opacity-40">
             <div>
-              <p className="text-[#EFA335] text-xs font-bold mb-1 tracking-widest uppercase">Performance</p>
-              <p className={`text-[10px] uppercase tracking-widest ${isDarkMode ? 'text-white/80' : 'text-black/80'}`}>Redução de até 65%</p>
+              <p className="text-[#EFA335] text-[10px] font-bold mb-1 tracking-widest uppercase">Performance</p>
+              <p className={`text-[9px] uppercase tracking-widest ${isDarkMode ? 'text-white/80' : 'text-black/80'}`}>Redução 65%</p>
             </div>
             <div>
-              <p className="text-[#EFA335] text-xs font-bold mb-1 tracking-widest uppercase">Prazos</p>
-              <p className={`text-[10px] uppercase tracking-widest ${isDarkMode ? 'text-white/80' : 'text-black/80'}`}>Até 120 Parcelas</p>
+              <p className="text-[#EFA335] text-[10px] font-bold mb-1 tracking-widest uppercase">Prazos</p>
+              <p className={`text-[9px] uppercase tracking-widest ${isDarkMode ? 'text-white/80' : 'text-black/80'}`}>120 Parcelas</p>
             </div>
             <div>
-              <p className="text-[#EFA335] text-xs font-bold mb-1 tracking-widest uppercase">Crédito</p>
-              <p className={`text-[10px] uppercase tracking-widest ${isDarkMode ? 'text-white/80' : 'text-black/80'}`}>Recuperação CAPAG A/B</p>
+              <p className="text-[#EFA335] text-[10px] font-bold mb-1 tracking-widest uppercase">Crédito</p>
+              <p className={`text-[9px] uppercase tracking-widest ${isDarkMode ? 'text-white/80' : 'text-black/80'}`}>Rating A/B</p>
             </div>
           </div>
         </div>
         
-        <div className="lg:col-span-5 relative">
-          <div className={`relative z-10 border p-3 transition-colors duration-500 group ${
-            isDarkMode ? 'border-white/5 bg-white/[0.02]' : 'border-black/5 bg-black/[0.01] shadow-xl'
-          } backdrop-blur-sm`}>
-            <div className="overflow-hidden aspect-[4/5] relative">
-              <div className={`absolute inset-0 transition-all duration-700 z-10 ${isDarkMode ? 'bg-black/20 group-hover:bg-transparent' : 'bg-transparent'}`}></div>
+        <div className="lg:col-span-6 relative flex justify-center lg:justify-end">
+          <div className={`relative z-10 border p-2 transition-colors duration-500 group ${
+            isDarkMode ? 'border-white/5 bg-white/[0.02]' : 'border-black/5 bg-black/[0.01] shadow-2xl'
+          } backdrop-blur-sm max-w-[440px] w-full`}>
+            <div className="overflow-hidden aspect-[9/16] relative bg-slate-900">
+              <div className={`absolute inset-0 transition-all duration-700 z-10 ${isDarkMode ? 'bg-black/10 group-hover:bg-transparent' : 'bg-transparent'}`}></div>
               <img 
-                src="https://images.unsplash.com/photo-1600607687940-497f27327b5e?q=80&w=2070&auto=format&fit=crop" 
-                alt="Ambiente Pedrosa & Peixoto Advogados" 
-                className={`w-full h-full object-cover transition-all duration-1000 ${isDarkMode ? 'grayscale-[0.3] group-hover:grayscale-0' : ''} group-hover:scale-110`}
+                src="office-hero.jpg" 
+                alt="Sede Pedrosa & Peixoto Advogados" 
+                className={`w-full h-full object-cover transition-all duration-1000 ${isDarkMode ? 'grayscale-[0.05] group-hover:grayscale-0' : ''} group-hover:scale-105`}
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=2069&auto=format&fit=crop";
+                }}
+                loading="eager"
               />
             </div>
             
-            <div className={`absolute -bottom-8 -left-8 p-8 border-l-4 border-[#EFA335] shadow-2xl z-20 max-w-[280px] animate-fade-in glass ${
+            <div className={`absolute -bottom-6 -left-6 md:-left-12 p-6 md:p-8 border-l-4 border-[#EFA335] shadow-2xl z-20 max-w-[240px] md:max-w-[300px] animate-fade-in glass ${
               isDarkMode ? 'text-white/80' : 'bg-white/95 text-slate-700 border-y border-r border-black/5'
             }`}>
               <div className="mb-4">
                  <div className="flex items-center gap-3">
-                    <div className={`w-[1px] h-10 ${isDarkMode ? 'bg-white' : 'bg-slate-900'}`}></div>
+                    <div className={`w-[1px] h-8 md:h-10 ${isDarkMode ? 'bg-white' : 'bg-slate-900'}`}></div>
                     <div className="flex flex-col">
-                       <span className={`text-sm font-light tracking-[0.2em] ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>PEDROSA</span>
-                       <span className={`text-sm font-bold tracking-[0.1em] ${isDarkMode ? 'text-white' : 'text-slate-900'}`}><span className="text-[#EFA335]">&</span> PEIXOTO</span>
+                       <span className={`text-xs md:text-sm font-light tracking-[0.2em] ${isDarkMode ? 'text-white' : 'text-slate-900'}`}>PEDROSA</span>
+                       <span className={`text-xs md:text-sm font-bold tracking-[0.1em] ${isDarkMode ? 'text-white' : 'text-slate-900'}`}><span className="text-[#EFA335]">&</span> PEIXOTO</span>
                     </div>
                  </div>
               </div>
-              <p className="serif text-lg italic leading-tight">
+              <p className="serif text-base md:text-lg italic leading-tight">
                 "Excelência técnica em um ambiente projetado para decisões de alto impacto."
               </p>
             </div>
           </div>
-          <div className="absolute -top-10 -right-10 w-40 h-40 border-t border-r border-[#EFA335]/20 -z-0"></div>
+          <div className="absolute -top-6 -right-6 w-32 h-32 border-t border-r border-[#EFA335]/20 -z-0"></div>
         </div>
       </div>
     </section>

@@ -10,6 +10,19 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode }) => {
   const waNumber = "5585994059821";
   const footerWaMsg = encodeURIComponent("Olá! Encontrei o contato no site da Pedrosa & Peixoto e gostaria de agendar uma consulta estratégica.");
 
+  const trackFooterClick = () => {
+    const win = window as any;
+    if (typeof win.gtag === 'function') {
+      win.gtag('event', 'contact', {
+        'event_category': 'whatsapp',
+        'event_label': 'footer_contact'
+      });
+    }
+    if (typeof win.fbq === 'function') {
+      win.fbq('track', 'Contact', { content_name: 'footer_whatsapp' });
+    }
+  };
+
   return (
     <footer id="contato" className={`py-20 transition-colors duration-500 border-t ${
       isDarkMode ? 'bg-black border-white/10' : 'bg-white border-slate-200'
@@ -72,6 +85,7 @@ const Footer: React.FC<FooterProps> = ({ isDarkMode }) => {
             href={`https://wa.me/${waNumber}?text=${footerWaMsg}`}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={trackFooterClick}
             className="text-[#EFA335] text-xs font-bold hover:underline"
           >
             +55 85 99405-9821

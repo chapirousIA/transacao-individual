@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 
 interface LeadFormProps {
@@ -42,8 +41,29 @@ const LeadForm: React.FC<LeadFormProps> = ({ isDarkMode }) => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Futura integração com n8n:
-    // sendToWebhook(formData);
+    // TRACKING CONVERSIONS
+    const win = window as any;
+    if (typeof win.gtag === 'function') {
+      // Evento genérico para Analytics
+      win.gtag('event', 'generate_lead', {
+        'event_category': 'form',
+        'event_label': 'diagnostico_estrategico'
+      });
+      
+      // CONVERSÃO ESPECÍFICA GOOGLE ADS: Enviar formulário de lead GOOGLE STUDIO
+      win.gtag('event', 'conversion', { 
+        'send_to': 'AW-801482985/-Q4HCNHatNgbEOnRlv4C' 
+      });
+    }
+    
+    // META PIXEL LEAD
+    if (typeof win.fbq === 'function') {
+      win.fbq('track', 'Lead', {
+        content_name: 'Diagnóstico Estratégico',
+        value: 0,
+        currency: 'BRL'
+      });
+    }
 
     const message = `*Novo Diagnóstico Estratégico - Pedrosa & Peixoto*
 ---------------------------------------
@@ -62,21 +82,6 @@ _Lead originado via formulário do site._`;
     const waUrl = `https://wa.me/5585994059821?text=${encodeURIComponent(message)}`;
     window.open(waUrl, '_blank');
   };
-
-  // Função placeholder para integração futura
-  /*
-  const sendToWebhook = async (data: FormData) => {
-    try {
-      await fetch('SUA_URL_DO_N8N_AQUI', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data)
-      });
-    } catch (err) {
-      console.error('Erro ao enviar para webhook', err);
-    }
-  };
-  */
 
   return (
     <section id="formulario" className={`py-32 transition-colors duration-500 relative overflow-hidden ${

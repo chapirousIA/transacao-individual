@@ -86,6 +86,19 @@ const Services: React.FC<ServicesProps> = ({ isDarkMode }) => {
     return `https://wa.me/5585994059821?text=${encodeURIComponent(msg)}`;
   };
 
+  const trackServiceClick = (serviceTitle: string) => {
+    const win = window as any;
+    if (typeof win.gtag === 'function') {
+      win.gtag('event', 'contact', {
+        'event_category': 'whatsapp_service',
+        'event_label': serviceTitle
+      });
+    }
+    if (typeof win.fbq === 'function') {
+      win.fbq('track', 'Contact', { content_name: serviceTitle, content_category: 'service_interest' });
+    }
+  };
+
   return (
     <section id="servicos" className={`py-32 transition-colors duration-500 border-y ${
       isDarkMode ? 'bg-[#0A0A0B] border-white/5' : 'bg-[#F4F4F7] border-black/5'
@@ -139,6 +152,7 @@ const Services: React.FC<ServicesProps> = ({ isDarkMode }) => {
                   href={getWaLink(s.title)}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackServiceClick(s.title)}
                   className="inline-block text-[10px] uppercase tracking-[0.2em] border-b border-[#EFA335] pb-1 hover:text-[#EFA335] transition-all font-bold"
                 >
                   Analisar Viabilidade Técnica

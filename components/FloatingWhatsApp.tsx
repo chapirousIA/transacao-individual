@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 const FloatingWhatsApp: React.FC = () => {
@@ -6,11 +5,26 @@ const FloatingWhatsApp: React.FC = () => {
   const message = encodeURIComponent("Olá! Vi o site da Pedrosa & Peixoto e gostaria de falar com um especialista sobre a regularização do passivo tributário da minha empresa.");
   const url = `https://wa.me/${waNumber}?text=${message}`;
 
+  const handleTrack = () => {
+    // Fix: Cast window to any to access gtag and fbq tracking functions added by external scripts
+    const win = window as any;
+    if (typeof win.gtag === 'function') {
+      win.gtag('event', 'contact', {
+        'event_category': 'whatsapp',
+        'event_label': 'floating_button'
+      });
+    }
+    if (typeof win.fbq === 'function') {
+      win.fbq('track', 'Contact');
+    }
+  };
+
   return (
     <a
       href={url}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={handleTrack}
       className="fixed bottom-6 right-6 z-[60] w-14 h-14 bg-[#25D366] rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 hover:bg-[#20ba5a] active:scale-95 group"
       aria-label="Falar no WhatsApp"
     >

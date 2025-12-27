@@ -10,6 +10,21 @@ const Hero: React.FC<HeroProps> = ({ isDarkMode }) => {
   const diagMsg = encodeURIComponent("Olá! Gostaria de um diagnóstico estratégico para Transação Individual e/ou CAPAG com a Pedrosa & Peixoto.");
   const specialistMsg = encodeURIComponent("Olá! Gostaria de falar com um especialista sobre a regularização do passivo tributário federal da minha empresa.");
   
+  const trackWhatsAppClick = (location: string) => {
+    const win = window as any;
+    if (typeof win.gtag === 'function') {
+      win.gtag('event', 'contact', {
+        'event_category': 'whatsapp',
+        'event_label': `hero_${location}`
+      });
+      // Se tiver um ID de conversão específico do Google Ads para clique em WhatsApp, insira aqui:
+      // win.gtag('event', 'conversion', { 'send_to': 'AW-801482985/LABEL_AQUI' });
+    }
+    if (typeof win.fbq === 'function') {
+      win.fbq('track', 'Contact', { content_category: 'whatsapp', content_name: `hero_${location}` });
+    }
+  };
+
   return (
     <section className={`relative min-h-screen flex flex-col justify-center px-6 pt-28 pb-20 overflow-hidden transition-colors duration-500 ${isDarkMode ? 'bg-[#0A0D14]' : 'bg-[#FDFDFD]'}`}>
       {/* Background decoration */}
@@ -41,6 +56,7 @@ const Hero: React.FC<HeroProps> = ({ isDarkMode }) => {
               href={`https://wa.me/${waNumber}?text=${diagMsg}`}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackWhatsAppClick('diagnostico')}
               className="btn-gold px-12 py-5 text-[11px] font-bold uppercase tracking-[0.2em] text-center shadow-lg shadow-[#EFA335]/10"
             >
               Diagnóstico Estratégico
@@ -49,6 +65,7 @@ const Hero: React.FC<HeroProps> = ({ isDarkMode }) => {
               href={`https://wa.me/${waNumber}?text=${specialistMsg}`}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackWhatsAppClick('especialista')}
               className={`px-10 py-5 border text-[11px] font-bold uppercase tracking-[0.2em] text-center transition-all flex items-center justify-center gap-3 group ${
                 isDarkMode 
                   ? 'border-white/10 text-white hover:bg-white/[0.03] hover:border-white/30' 

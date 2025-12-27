@@ -9,7 +9,6 @@ interface NavbarProps {
 
 const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleTheme }) => {
   const [scrolled, setScrolled] = useState(false);
-  const whatsappUrl = "https://wa.me/5585994059821?text=" + encodeURIComponent("Olá! Gostaria de solicitar um diagnóstico estratégico para minha empresa com a Pedrosa & Peixoto.");
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -60,7 +59,7 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleTheme }) => {
 
           <a 
             href="#formulario"
-            className="btn-gold px-6 py-2 text-[10px] font-bold uppercase tracking-[0.2em]"
+            className="btn-gold px-6 py-2 text-[10px] font-bold uppercase tracking-[0.2em] animate-pulse-gold"
           >
             Solicitar Diagnóstico
           </a>

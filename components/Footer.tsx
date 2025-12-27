@@ -3,6 +3,9 @@ import React from 'react';
 import Logo from './Logo';
 
 const Footer: React.FC = () => {
+  const waNumber = "5585994059821";
+  const footerWaMsg = encodeURIComponent("Olá! Encontrei o contato no site da Pedrosa & Peixoto e gostaria de agendar uma consulta estratégica.");
+
   return (
     <footer id="contato" className="py-20 bg-black border-t border-white/10">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
@@ -34,7 +37,14 @@ const Footer: React.FC = () => {
         <div>
           <h4 className="text-[10px] uppercase tracking-widest text-white mb-6 font-bold">Relacionamento</h4>
           <p className="text-white/40 text-xs mb-2">atendimento@pedrosapeixoto.adv.br</p>
-          <p className="text-[#EFA335] text-xs font-bold">+55 11 99999-9999</p>
+          <a 
+            href={`https://wa.me/${waNumber}?text=${footerWaMsg}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-[#EFA335] text-xs font-bold hover:underline"
+          >
+            +55 85 99405-9821
+          </a>
         </div>
       </div>
       

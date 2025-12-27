@@ -63,20 +63,25 @@ const services = [
     ]
   },
   {
-    category: "PROTEÇÃO",
-    title: "Holding e Planejamento Sucessório",
-    subtitle: "Blindagem de Patrimônio Familiar",
-    desc: "Implementação de veículos societários inteligentes para garantir a continuidade dos negócios e a proteção dos ativos dos sócios contra riscos operacionais.",
+    category: "Estratégia",
+    title: "Uso de Precatórios na Transação",
+    subtitle: "Otimização via Mercado Secundário",
+    desc: "Precatórios federais podem ser utilizados para amortizar o saldo devedor na transação tributária. Como são negociados com deságio significativo, o contribuinte obtém uma redução efetiva superior aos descontos legais. Estruturamos a aquisição e a compensação para maximizar a economia com total segurança jurídica.",
     bullets: [
-      "Acordo de Sócios Especializado",
-      "Protocolos Familiares",
-      "Eficiência em ITCMD",
-      "Gestão de Riscos Patrimoniais"
+      "Prospecção de Precatórios",
+      "Análise de Compatibilidade",
+      "Estruturação da Cessão",
+      "Economia Efetiva Ampliada"
     ]
   }
 ];
 
 const Services: React.FC = () => {
+  const getWaLink = (title: string) => {
+    const msg = `Olá! Tenho interesse no serviço: ${title}. Gostaria de solicitar uma análise de viabilidade técnica para minha empresa.`;
+    return `https://wa.me/5585994059821?text=${encodeURIComponent(msg)}`;
+  };
+
   return (
     <section id="serviços" className="py-32 bg-[#0A0A0B] border-y border-white/5">
       <div className="max-w-7xl mx-auto px-6">
@@ -84,7 +89,7 @@ const Services: React.FC = () => {
           <div className="max-w-2xl">
             <h2 className="serif text-5xl md:text-6xl mb-6">Soluções Corporativas</h2>
             <p className="text-white/50 font-light leading-relaxed">
-              O passivo tributário não deve ser um limitador para a operação. Nossa abordagem técnica resolve o impasse fiscal e abre novas linhas de crescimento.
+              O passivo tributário não deve ser um limitador para a operação. Nossa abordagem técnica resolve o impasse fiscal e abre novas lines de crescimento.
             </p>
           </div>
           <div className="text-right hidden md:block">
@@ -118,7 +123,12 @@ const Services: React.FC = () => {
               </div>
 
               <div>
-                <a href="#formulario" className="inline-block text-[10px] uppercase tracking-[0.2em] border-b border-[#EFA335] pb-1 hover:text-[#EFA335] transition-all font-bold">
+                <a 
+                  href={getWaLink(s.title)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block text-[10px] uppercase tracking-[0.2em] border-b border-[#EFA335] pb-1 hover:text-[#EFA335] transition-all font-bold"
+                >
                   Analisar Viabilidade Técnica
                 </a>
               </div>

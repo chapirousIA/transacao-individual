@@ -2,7 +2,9 @@
 import React from 'react';
 
 const Hero: React.FC = () => {
-  const whatsappMsg = encodeURIComponent("Olá! Gostaria de um diagnóstico estratégico para Transação Individual e/ou CAPAG com a Pedrosa & Peixoto.");
+  const waNumber = "5585994059821";
+  const diagMsg = encodeURIComponent("Olá! Gostaria de um diagnóstico estratégico para Transação Individual e/ou CAPAG com a Pedrosa & Peixoto.");
+  const specialistMsg = encodeURIComponent("Olá! Gostaria de falar com um especialista sobre a regularização do passivo tributário federal da minha empresa.");
   
   return (
     <section className="relative min-h-screen flex flex-col justify-center px-6 pt-20 overflow-hidden bg-[#0A0D14]">
@@ -31,11 +33,16 @@ const Hero: React.FC = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6">
-            <a href="#formulario" className="btn-gold px-12 py-5 text-[11px] font-bold uppercase tracking-[0.2em] text-center shadow-lg shadow-[#EFA335]/10">
+            <a 
+              href={`https://wa.me/${waNumber}?text=${diagMsg}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-gold px-12 py-5 text-[11px] font-bold uppercase tracking-[0.2em] text-center shadow-lg shadow-[#EFA335]/10"
+            >
               Diagnóstico Estratégico
             </a>
             <a 
-              href={`https://wa.me/5511999999999?text=${whatsappMsg}`}
+              href={`https://wa.me/${waNumber}?text=${specialistMsg}`}
               target="_blank"
               rel="noopener noreferrer"
               className="px-10 py-5 border border-white/10 text-[11px] font-bold uppercase tracking-[0.2em] text-center hover:bg-white/[0.03] hover:border-white/30 transition-all flex items-center justify-center gap-3 group"

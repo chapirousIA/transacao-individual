@@ -4,6 +4,7 @@ import Logo from './Logo';
 
 const Navbar: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
+  const whatsappUrl = "https://wa.me/5585994059821?text=" + encodeURIComponent("Olá! Gostaria de solicitar um diagnóstico estratégico para minha empresa com a Pedrosa & Peixoto.");
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -32,7 +33,12 @@ const Navbar: React.FC = () => {
               {item.name}
             </a>
           ))}
-          <a href="#formulario" className="btn-gold px-6 py-2 text-[10px] font-bold uppercase tracking-[0.2em]">
+          <a 
+            href={whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-gold px-6 py-2 text-[10px] font-bold uppercase tracking-[0.2em]"
+          >
             Solicitar Diagnóstico
           </a>
         </div>

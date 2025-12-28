@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 interface PartnerProfileProps {
@@ -16,15 +15,15 @@ const PartnerProfile: React.FC<PartnerProfileProps> = ({ isDarkMode }) => {
             <div className={`relative z-10 w-full max-w-[400px] mx-auto lg:ml-0 aspect-[4/5] border p-2 transition-colors duration-500 ${
               isDarkMode ? 'border-white/10 bg-white/[0.02]' : 'border-black/5 bg-slate-50 shadow-2xl'
             }`}>
-              {/* Foto do Dr. Fábio Pedrosa */}
-              <div className="w-full h-full bg-slate-900 relative overflow-hidden group">
+              {/* Foto do Dr. Fábio Pedrosa - Agora com filtro PB por padrão */}
+              <div className="w-full h-full bg-[#111] relative overflow-hidden group">
                 <img 
-                  src="fabio-pedrosa.jpg" 
+                  src="foto-fabio-pedrosa.jpg" 
                   alt="Dr. Fábio Pedrosa" 
-                  className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0"
+                  className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 scale-[1.02] group-hover:scale-100"
+                  loading="lazy"
                   onError={(e) => {
-                    // Fallback visual caso a imagem não carregue
-                    (e.target as HTMLImageElement).style.display = 'none';
+                    (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=1000';
                   }}
                 />
                 

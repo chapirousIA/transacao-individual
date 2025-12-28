@@ -12,14 +12,10 @@ const Hero: React.FC<HeroProps> = ({ isDarkMode }) => {
   const trackWhatsAppClick = (location: string) => {
     const win = window as any;
     if (typeof win.gtag === 'function') {
-      // 1. Google Analytics
       win.gtag('event', 'contact', {
         'event_category': 'whatsapp',
         'event_label': `hero_${location}`
       });
-      
-      // 2. Google Ads Conversion
-      // IMPORTANTE: Substitua 'ROTULO_CONVERSAO_WHATSAPP' pelo rótulo gerado no painel do Ads
       win.gtag('event', 'conversion', { 
         'send_to': 'AW-801482985/ROTULO_CONVERSAO_WHATSAPP' 
       });
@@ -87,11 +83,15 @@ const Hero: React.FC<HeroProps> = ({ isDarkMode }) => {
             isDarkMode ? 'border-white/5 bg-white/[0.02]' : 'border-black/5 bg-black/[0.01] shadow-2xl'
           } backdrop-blur-sm max-w-[440px] w-full`}>
             <div className="overflow-hidden aspect-[9/16] relative bg-slate-900">
-              <div className={`absolute inset-0 transition-all duration-700 z-10 ${isDarkMode ? 'bg-black/10 group-hover:bg-transparent' : 'bg-transparent'}`}></div>
+              <div className={`absolute inset-0 transition-all duration-700 z-10 ${isDarkMode ? 'bg-black/20 group-hover:bg-transparent' : 'bg-transparent'}`}></div>
               <img 
-                src="office-hero.jpg" 
+                src="escritorio-pedrosa.jpg" 
                 alt="Sede Pedrosa & Peixoto Advogados" 
-                className={`w-full h-full object-cover transition-all duration-1000 ${isDarkMode ? 'grayscale-[0.05] group-hover:grayscale-0' : ''} group-hover:scale-105`}
+                className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
+                loading="lazy"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1000';
+                }}
               />
             </div>
             

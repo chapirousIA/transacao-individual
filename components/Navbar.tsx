@@ -15,7 +15,7 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleTheme }) => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener('scroll', handleScroll);
     
-    // Volume configurado para uma experiência imersiva e profunda (15%) - Day One Style
+    // Volume ultra-suave para o tema Day One (15%)
     if (audioRef.current) {
       audioRef.current.volume = 0.15;
     }
@@ -47,7 +47,7 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleTheme }) => {
           <Logo light={isDarkMode} scale={0.8} />
         </a>
         
-        {/* Elemento de Áudio - Interstellar Theme (Day One Piano Instrumental) */}
+        {/* Elemento de Áudio - Instrumental Day One (Interstellar Piano Style) */}
         <audio 
           ref={audioRef} 
           loop 
@@ -74,7 +74,7 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleTheme }) => {
           ))}
           
           <div className="flex items-center gap-2 border-l border-white/10 pl-6">
-            {/* Music Toggle - Day One Control */}
+            {/* Music Toggle - Day One Theme Control */}
             <button 
               onClick={toggleMusic}
               className={`p-2 px-3 rounded-full transition-all flex items-center justify-center gap-3 border ${
@@ -82,7 +82,7 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleTheme }) => {
                   ? 'text-[#EFA335] bg-[#EFA335]/10 border-[#EFA335]/30' 
                   : (isDarkMode ? 'text-white/40 border-white/10 hover:text-white/70 hover:bg-white/5' : 'text-black/40 border-black/5 hover:text-black/70 hover:bg-black/5')
               }`}
-              title={isMusicPlaying ? "Pausar Day One" : "Ouvir Day One - Interstellar (Piano)"}
+              title={isMusicPlaying ? "Pausar trilha sonora" : "Ouvir Day One - Interstellar (Piano)"}
             >
               <div className="flex items-end gap-[2px] h-3">
                 <div className={`w-[2px] bg-current transition-all duration-1000 ${isMusicPlaying ? 'animate-[music-bar_3.5s_infinite_ease-in-out_0.1s] h-3' : 'h-1'}`}></div>

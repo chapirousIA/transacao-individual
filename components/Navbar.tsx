@@ -36,6 +36,28 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleTheme }) => {
     setIsMusicPlaying(!isMusicPlaying);
   };
 
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id.replace('#', ''));
+    if (element) {
+      const offset = 80; // Compensação para o header fixo não cobrir o título da seção
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    } else if (id === '#root') {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 border-b ${
       scrolled 
@@ -43,7 +65,11 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleTheme }) => {
         : 'bg-transparent border-transparent'
     } py-4 md:py-6`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <a href="#" className="hover:opacity-80 transition-opacity">
+        <a 
+          href="#" 
+          onClick={(e) => scrollToSection(e, '#root')}
+          className="hover:opacity-80 transition-opacity"
+        >
           <Logo light={isDarkMode} scale={0.8} />
         </a>
         
@@ -65,6 +91,7 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleTheme }) => {
             <a 
               key={item.name} 
               href={item.link} 
+              onClick={(e) => scrollToSection(e, item.link)}
               className={`text-[10px] uppercase tracking-[0.3em] font-medium transition-colors ${
                 isDarkMode ? 'text-white/60 hover:text-white' : 'text-black/60 hover:text-black'
               }`}
@@ -108,6 +135,7 @@ const Navbar: React.FC<NavbarProps> = ({ isDarkMode, toggleTheme }) => {
 
           <a 
             href="#formulario"
+            onClick={(e) => scrollToSection(e, '#formulario')}
             className="btn-gold px-6 py-2 text-[10px] font-bold uppercase tracking-[0.2em] animate-pulse-gold"
           >
             Solicitar Diagnóstico

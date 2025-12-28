@@ -18,13 +18,10 @@ const PartnerProfile: React.FC<PartnerProfileProps> = ({ isDarkMode }) => {
               {/* Foto do Dr. Fábio Pedrosa - Agora com filtro PB por padrão */}
               <div className="w-full h-full bg-[#111] relative overflow-hidden group">
                 <img 
-                  src="foto-fabio-pedrosa.jpg" 
+                  src="/images/foto-fabio-pedrosa.jpg" 
                   alt="Dr. Fábio Pedrosa" 
                   className="w-full h-full object-cover grayscale transition-all duration-700 group-hover:grayscale-0 scale-[1.02] group-hover:scale-100"
                   loading="lazy"
-                  onError={(e) => {
-                    (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=1000';
-                  }}
                 />
                 
                 {/* Overlay Informativa sobre a foto */}

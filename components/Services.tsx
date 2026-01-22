@@ -28,20 +28,6 @@ const services = [
     subtitle: "Sua Empresa em Conformidade",
     desc: "Mapeamos a situação completa do seu passivo tributário federal para identificar a estratégia mais adequada de regularização.",
     bullets: ["Análise de Risco Fiscal", "Mapeamento de Créditos", "Revisão de Contingências", "Estratégia de Defesa"]
-  },
-  {
-    category: "AMORTIZAÇÃO",
-    title: "Uso de Prejuizo Fiscal na Transação",
-    subtitle: "Maximize seus Créditos",
-    desc: "Empresas com prejuízo fiscal e base de cálculo negativa de CSLL acumulados podem utilizá-los para amortizar até 70% do saldo devedor remanescente na transação tributária federal. Estruturamos a operação para maximizar o aproveitamento desses créditos, reduzindo o desembolso efetivo e preservando o capital de giro da empresa.",
-    bullets: ["Redução do Desembolso Caixa", "Aproveitamento de Ativos Diferidos", "Preservação de Capital de Giro", "Máxima Eficiência Fiscal"]
-  },
-  {
-    category: "AMORTIZAÇÃO",
-    title: "Uso de Precatórios na Transação",
-    subtitle: "Economia com Segurança",
-    desc: "Precatórios federais podem ser utilizados para amortizar o saldo devedor na transação tributária, e como são negociados no mercado secundário com deságio significativo, o contribuinte obtém uma redução efetiva superior aos descontos legais. Estruturamos a aquisição e a operação de compensação para maximizar a economia e garantir segurança jurídica em cada etapa.",
-    bullets: ["Aquisição com Deságio", "Segurança Jurídica na Cessão", "Potencialização do Desconto", "Assessoria Completa"]
   }
 ];
 
@@ -64,8 +50,8 @@ const Services: React.FC<ServicesProps> = ({ isDarkMode }) => {
         'event_label': serviceTitle
       });
       // Google Ads Conversion
-      win.gtag('event', 'conversion', {
-        'send_to': 'AW-801482985/CLIQUE_WHATSAPP'
+      win.gtag('event', 'conversion', { 
+        'send_to': 'AW-801482985/CLIQUE_WHATSAPP' 
       });
     }
     if (typeof win.fbq === 'function') {
@@ -74,8 +60,9 @@ const Services: React.FC<ServicesProps> = ({ isDarkMode }) => {
   };
 
   return (
-    <section id="servicos" className={`py-32 transition-colors duration-500 border-y ${isDarkMode ? 'bg-[#0A0A0B] border-white/5' : 'bg-[#F4F4F7] border-black/5'
-      }`}>
+    <section id="servicos" className={`py-32 transition-colors duration-500 border-y ${
+      isDarkMode ? 'bg-[#0A0A0B] border-white/5' : 'bg-[#F4F4F7] border-black/5'
+    }`}>
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
           <div className="max-w-2xl">
@@ -88,15 +75,16 @@ const Services: React.FC<ServicesProps> = ({ isDarkMode }) => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {services.map((s, idx) => (
-            <div key={idx} className={`p-12 border transition-all group relative flex flex-col justify-between ${isDarkMode ? 'border-white/10 hover:bg-white/[0.02] bg-transparent' : 'border-black/5 hover:bg-white bg-white/50 shadow-sm hover:shadow-xl'
-              }`}>
+            <div key={idx} className={`p-12 border transition-all group relative flex flex-col justify-between ${
+              isDarkMode ? 'border-white/10 hover:bg-white/[0.02] bg-transparent' : 'border-black/5 hover:bg-white bg-white/50 shadow-sm hover:shadow-xl'
+            }`}>
               <div>
                 <span className="block text-[10px] uppercase tracking-[0.3em] text-[#EFA335] mb-8 font-bold">{s.category}</span>
                 <h3 className={`serif text-3xl mb-2 transition-colors ${isDarkMode ? 'group-hover:text-white' : 'text-slate-900'}`}>{s.title}</h3>
                 <p className={`text-sm leading-relaxed font-light mb-10 transition-colors ${isDarkMode ? 'text-white/50' : 'text-slate-500'}`}>{s.desc}</p>
               </div>
               <div>
-                <a
+                <a 
                   href={getWaLink(s.title)}
                   target="_blank"
                   rel="noopener noreferrer"

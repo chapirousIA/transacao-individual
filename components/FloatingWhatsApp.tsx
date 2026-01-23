@@ -2,7 +2,7 @@ import React from 'react';
 
 const FloatingWhatsApp: React.FC = () => {
   const waNumber = "5585994059821";
-  const message = encodeURIComponent("Olá! Vi o site da Pedrosa & Peixoto e gostaria de falar com um especialista sobre a regularização do passivo tributário da minha empresa.");
+  const message = encodeURIComponent("Vim da lp-transação tributária. Gostaria de atendimento");
   const url = `https://wa.me/${waNumber}?text=${message}`;
 
   const handleTrack = () => {

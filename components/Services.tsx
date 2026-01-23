@@ -36,8 +36,8 @@ interface ServicesProps {
 }
 
 const Services: React.FC<ServicesProps> = ({ isDarkMode }) => {
-  const getWaLink = (title: string) => {
-    const msg = `Olá! Tenho interesse no serviço: ${title}. Gostaria de solicitar uma análise de viabilidade técnica para minha empresa.`;
+  const getWaLink = () => {
+    const msg = "Vim da lp-transação tributária. Gostaria de atendimento";
     return `https://wa.me/5585994059821?text=${encodeURIComponent(msg)}`;
   };
 
@@ -85,7 +85,7 @@ const Services: React.FC<ServicesProps> = ({ isDarkMode }) => {
               </div>
               <div>
                 <a 
-                  href={getWaLink(s.title)}
+                  href={getWaLink()}
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackServiceClick(s.title)}

@@ -6,8 +6,7 @@ interface HeroProps {
 
 const Hero: React.FC<HeroProps> = ({ isDarkMode }) => {
   const waNumber = "5585994059821";
-  const diagMsg = encodeURIComponent("Olá! Gostaria de um diagnóstico estratégico para Transação Individual e/ou CAPAG com a Pedrosa & Peixoto.");
-  const specialistMsg = encodeURIComponent("Olá! Gostaria de falar com um especialista sobre a regularização do passivo tributário federal da minha empresa.");
+  const standardMsg = encodeURIComponent("Vim da lp-transação tributária. Gostaria de atendimento");
   
   const trackWhatsAppClick = (location: string) => {
     const win = window as any;
@@ -53,7 +52,7 @@ const Hero: React.FC<HeroProps> = ({ isDarkMode }) => {
           
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
             <a 
-              href={`https://wa.me/${waNumber}?text=${diagMsg}`}
+              href={`https://wa.me/${waNumber}?text=${standardMsg}`}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackWhatsAppClick('diagnostico')}
@@ -62,7 +61,7 @@ const Hero: React.FC<HeroProps> = ({ isDarkMode }) => {
               Diagnóstico Estratégico
             </a>
             <a 
-              href={`https://wa.me/${waNumber}?text=${specialistMsg}`}
+              href={`https://wa.me/${waNumber}?text=${standardMsg}`}
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackWhatsAppClick('especialista')}
@@ -85,7 +84,7 @@ const Hero: React.FC<HeroProps> = ({ isDarkMode }) => {
             <div className="overflow-hidden aspect-[9/16] relative bg-slate-900">
               <div className={`absolute inset-0 transition-all duration-700 z-10 ${isDarkMode ? 'bg-black/20 group-hover:bg-transparent' : 'bg-transparent'}`}></div>
               <img 
-                src="escritorio-pedrosa.jpg" 
+                src="https://i.ibb.co/tpkgGm4p/foto-165.jpg" 
                 alt="Sede Pedrosa & Peixoto Advogados" 
                 className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-105"
                 loading="lazy"

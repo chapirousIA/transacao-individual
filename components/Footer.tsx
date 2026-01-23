@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Logo from './Logo';
 
@@ -8,7 +7,7 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ isDarkMode }) => {
   const waNumber = "5585994059821";
-  const footerWaMsg = encodeURIComponent("Olá! Encontrei o contato no site da Pedrosa & Peixoto e gostaria de agendar uma consulta estratégica.");
+  const footerWaMsg = encodeURIComponent("Vim da lp-transação tributária. Gostaria de atendimento");
 
   const trackFooterClick = () => {
     const win = window as any;
